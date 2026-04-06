@@ -7,6 +7,23 @@ An admin dashboard allows viewing, searching, and managing all registrations.
 
 ---
 
+## 📸 Preview
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## 🧰 Required Software
+Before running the project, ensure you have:
+
+1. **MySQL Server** – https://dev.mysql.com/downloads/installer/  
+2. **MySQL Workbench (Optional)** – https://dev.mysql.com/downloads/workbench/  
+3. **Python** – https://www.python.org/downloads/  
+4. **pip** – python -m ensurepip --upgrade  
+5. **Git** – https://git-scm.com/download/win  
+6. **VS Code** – https://code.visualstudio.com/  
+
+---
+
 ## 🚀 Features
 - Event registration form  
 - Duplicate email prevention (per event)  
@@ -17,12 +34,6 @@ An admin dashboard allows viewing, searching, and managing all registrations.
 
 ---
 
-## 🛠️ Technologies Used
-- **Frontend:** HTML, CSS, JavaScript  
-- **Backend:** Python (Flask)  
-- **Database:** MySQL  
-
----
 
 ## 🖥️ Frontend (UI)
 
@@ -32,15 +43,15 @@ An admin dashboard allows viewing, searching, and managing all registrations.
 
 ### 🔹 Features
 - Registration form (Name, Email, Event)  
-- Uses `fetch()` API for backend communication  
+- Uses fetch() API for backend communication  
 - Displays success/error messages  
 - Admin dashboard UI  
 - Search and filter support  
 
 ### 🔹 Flow
 1. User fills the form  
-2. Clicks **Register**  
-3. Data sent via `fetch()` API  
+2. Clicks Register  
+3. Data sent via fetch() API  
 4. Response displayed to user  
 
 ---
@@ -57,9 +68,7 @@ An admin dashboard allows viewing, searching, and managing all registrations.
 - Duplicate registration prevention  
 - JSON responses  
 
-### 🔹 API Endpoints
-- `POST /register` → Register user  
-- `GET /api/registrations` → Fetch all registrations  
+
 
 ### 🔹 Flow
 1. Receive request from frontend  
@@ -71,7 +80,7 @@ An admin dashboard allows viewing, searching, and managing all registrations.
 ---
 
 ## 🔗 Frontend ↔ Backend Flow
-- Frontend sends requests using `fetch()`  
+- Frontend sends requests using fetch()  
 - Backend processes via Flask routes  
 - Data stored in MySQL  
 - Response returned to frontend  
@@ -90,21 +99,25 @@ An admin dashboard allows viewing, searching, and managing all registrations.
 - Flask-CORS  
 
 ### Database
-- MySQL (Railway)
-
-### Hosting
-- Render  
+- MySQL (Localhost)  
 
 ---
 
 ## ⚙️ Installation & Setup
 
-### 1️⃣ Install Dependencies
-```bash
-pip install flask flask-cors mysql-connector-python
-```
+### 1️⃣ Clone the Repository
+git clone https://github.com/your-username/your-repo-name.git  
+cd your-repo-name  
 
-### 2️⃣ Setup MySQL Database
+---
+
+### 2️⃣ Install Dependencies
+pip install flask flask-cors mysql-connector-python  
+
+---
+
+### 3️⃣ Setup MySQL Database
+
 ```sql
 CREATE DATABASE college_events;
 
@@ -117,80 +130,78 @@ CREATE TABLE registrations (
     event_name VARCHAR(100),
     registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-```
 
-### 3️⃣ Configure Database (app.py)
-```python
-'password': 'your_password_here'
 ```
-
 ---
 
-## ▶️ Run the Project
-
-```bash
-python app.py
+### 4️⃣ Configure Database in app.py
 ```
-
-Open in browser:
+db_config = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'Chanchal55Pass.',
+    'database': 'college_events'
+}
 ```
-http://127.0.0.1:5000
-```
-
 ---
 
-## 🌐 Live Demo
-👉 https://college-event-system-evfm.onrender.com/
+## ▶️ Run the Application
+```
+python app.py  
 
+Open in browser:  
+http://127.0.0.1:5000  
+
+```
 ---
 
-## ☁️ Google Cloud Integration (Concept)
 
-### 🔹 Backend Hosting
-- Deploy Flask app using **Cloud Run**  
-- Enables public access  
+## 📊 How to View Data
 
-### 🔹 Database
-- Use **Cloud SQL (MySQL)**  
-- Secure and managed database  
+### 🔹 Using Website
+- Open Admin Dashboard  
+- View all registrations in table  
 
-### 🔹 Storage
-- Use **Cloud Storage**  
-- Store images, files, backups  
+### 🔹 Using MySQL
+SELECT * FROM registrations;
 
-### 🔹 API Hosting
-- APIs run via **Cloud Run**  
+### 🔹 Using API
 
-### 🔹 Access
-- Globally accessible via URL  
+http://127.0.0.1:5000/api/registrations
 
 ---
 
 ## 📸 Screenshots
-| Feature | Preview |
-|--------|--------|
-| Registration Form | ![Form](screenshots/form.png) |
-| Success Message | ![Success](screenshots/success.png) |
-| Admin Dashboard | ![Dashboard](screenshots/dashboard.png) |
+
+### Registration Form
+![Form](screenshots/form.png)
+
+### Confirmation Message
+![Success](screenshots/success.png)
+
+### Admin Dashboard
+![Dashboard](screenshots/dashboard.png)
 
 ---
 
 ## 🎥 Demo Video
 
-▶️ Click below to watch:
+▶️ Click the image below to watch demo:
 
 [![Watch Demo](screenshots/form.png)](https://drive.google.com/file/d/1pGBMSj3qtzhnmIr7qNftph8JPV4-ItX1/view?usp=drive_link)
+
+
 
 ---
 
 ## 🔮 Future Improvements
 - User authentication system  
 - Email confirmation feature  
-- Full cloud deployment (Cloud Run + Cloud SQL)  
+- Edit/Delete functionality in dashboard  
 - Enhanced mobile responsiveness  
 
 ---
 
 ## ✅ Conclusion
 This project demonstrates full-stack development using **Flask + MySQL** with frontend-backend integration.  
-It also introduces **cloud scalability concepts using Google Cloud services**.
+It provides a complete workflow from user input to database storage and admin-level data management.

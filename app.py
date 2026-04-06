@@ -1,41 +1,25 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import mysql.connector
-import os
-from urllib.parse import urlparse
 
 # Initialize app
-app = Flask(__name__, static_folder='static', static_url_path='')
+app = Flask(__name__)
 CORS(app)
 
 # ================= DATABASE CONFIG =================
 
-db_url = os.environ.get("MYSQL_PUBLIC_URL")
-
-if not db_url:
-    raise Exception("MYSQL_PUBLIC_URL is not set in environment variables")
-
-url = urlparse(db_url)
-
 db_config = {
-    'host': url.hostname,
-    'user': url.username,
-    'password': url.password,
-    'database': url.path[1:],  # remove leading '/'
-    'port': url.port,
-    'connection_timeout': 5
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'Chanchal55Pass.',  
+    'database': 'event_db'
 }
 
-# ================= ROUTES =================
+# ================= HOME ROUTE =================
 
 @app.route('/')
 def home():
-    return app.send_static_file('index.html')
-
-@app.route('/admin')
-def admin():
-    return app.send_static_file('admin.html')
-
+    return render_template('index.html')
 
 # ================= REGISTER API =================
 
@@ -54,14 +38,14 @@ def register():
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
 
-        # Check duplicate registration
+        # Check duplicate
         cursor.execute(
-            "SELECT * FROM registrations WHERE email = %s AND event_name = %s",
+            "SELECT * FROM registrations WHERE email=%s AND event_name=%s",
             (email, event_name)
         )
 
         if cursor.fetchone():
-            return jsonify({'message': 'This email is already registered for this event!'}), 409
+            return jsonify({'message': 'Already registered for this event!'}), 409
 
         # Insert data
         cursor.execute(
@@ -74,7 +58,8 @@ def register():
         return jsonify({'message': 'Registration successful!'}), 200
 
     except Exception as e:
-        return jsonify({'message': f'Database error: {str(e)}'}), 500
+        print("Error:", e)
+        return jsonify({'message': 'Database error'}), 500
 
     finally:
         try:
@@ -83,11 +68,10 @@ def register():
         except:
             pass
 
-
-# ================= ADMIN API =================
+# ================= ADMIN DATA =================
 
 @app.route('/api/registrations', methods=['GET'])
-def get_registrations():
+def get_data():
     try:
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor(dictionary=True)
@@ -95,13 +79,11 @@ def get_registrations():
         cursor.execute("SELECT * FROM registrations ORDER BY registered_at DESC")
         rows = cursor.fetchall()
 
-        for row in rows:
-            row['registered_at'] = row['registered_at'].strftime('%Y-%m-%d %H:%M:%S')
-
         return jsonify(rows), 200
 
     except Exception as e:
-        return jsonify({'message': f'Database error: {str(e)}'}), 500
+        print("Error:", e)
+        return jsonify({'message': 'Database error'}), 500
 
     finally:
         try:
@@ -110,9 +92,7 @@ def get_registrations():
         except:
             pass
 
-
 # ================= RUN APP =================
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
