@@ -106,7 +106,7 @@ Before running the project, ensure you have:
 ## ⚙️ Installation & Setup
 
 ### 1️⃣ Clone the Repository
-git clone https://github.com/your-username/your-repo-name.git  
+git clone  https://github.com/chauhanchanchal/event_registration.git                                                            
 cd your-repo-name  
 
 ---
@@ -148,8 +148,9 @@ db_config = {
 ## ▶️ Run the Application
 ```
 python app.py  
+```
+Open in browser: 
 
-Open in browser:  
 http://127.0.0.1:5000  
 
 ```
