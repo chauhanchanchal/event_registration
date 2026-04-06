@@ -1,6 +1,6 @@
-# 🎓 Campus Event Registration System
+#  Campus Event Registration System
 
-## 📌 Project Description
+##  Project Description
 This is a web-based event registration system built using **Flask** and **MySQL**.  
 Users can register for different college events, while duplicate registrations are prevented.  
 An admin dashboard allows viewing, searching, and managing all registrations.
@@ -12,7 +12,7 @@ An admin dashboard allows viewing, searching, and managing all registrations.
 
 ---
 
-## 🧰 Required Software
+## Required Software
 Before running the project, ensure you have:
 
 1. **MySQL Server** – https://dev.mysql.com/downloads/installer/  
@@ -24,7 +24,7 @@ Before running the project, ensure you have:
 
 ---
 
-## 🚀 Features
+##  Features
 - Event registration form  
 - Duplicate email prevention (per event)  
 - Admin dashboard to view registrations  
@@ -35,7 +35,7 @@ Before running the project, ensure you have:
 ---
 
 
-## 🖥️ Frontend (UI)
+##  Frontend (UI)
 
 ### 🔹 Overview
 - Built using HTML, CSS, JavaScript  
@@ -56,7 +56,7 @@ Before running the project, ensure you have:
 
 ---
 
-## ⚙️ Backend (Flask API)
+##  Backend (Flask API)
 
 ### 🔹 Overview
 - Built using Flask (Python)  
@@ -79,7 +79,7 @@ Before running the project, ensure you have:
 
 ---
 
-## 🔗 Frontend ↔ Backend Flow
+##  Frontend ↔ Backend Flow
 - Frontend sends requests using fetch()  
 - Backend processes via Flask routes  
 - Data stored in MySQL  
@@ -87,7 +87,7 @@ Before running the project, ensure you have:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - HTML  
@@ -103,20 +103,20 @@ Before running the project, ensure you have:
 
 ---
 
-## ⚙️ Installation & Setup
+##  Installation & Setup
 
-### 1️⃣ Clone the Repository
+### 1️ Clone the Repository
 git clone  https://github.com/chauhanchanchal/event_registration.git                                                            
-cd your-repo-name  
+
 
 ---
 
-### 2️⃣ Install Dependencies
+### 2️ Install Dependencies
 pip install flask flask-cors mysql-connector-python  
 
 ---
 
-### 3️⃣ Setup MySQL Database
+### 3️ Setup MySQL Database
 
 ```sql
 CREATE DATABASE college_events;
@@ -134,7 +134,7 @@ CREATE TABLE registrations (
 ```
 ---
 
-### 4️⃣ Configure Database in app.py
+### 4️ Configure Database in app.py
 ```
 db_config = {
     'host': 'localhost',
@@ -145,9 +145,9 @@ db_config = {
 ```
 ---
 
-## ▶️ Run the Application
+##  Run the Application
 ```
-python app.py  
+py app.py  
 ```
 Open in browser: 
 
@@ -157,7 +157,7 @@ http://127.0.0.1:5000
 ---
 
 
-## 📊 How to View Data
+##  How to View Data
 
 ### 🔹 Using Website
 - Open Admin Dashboard  
@@ -191,18 +191,9 @@ http://127.0.0.1:5000/api/registrations
 
 [![Watch Demo](screenshots/form.png)](https://drive.google.com/file/d/1pGBMSj3qtzhnmIr7qNftph8JPV4-ItX1/view?usp=drive_link)
 
-
-
 ---
 
-## 🔮 Future Improvements
-- User authentication system  
-- Email confirmation feature  
-- Edit/Delete functionality in dashboard  
-- Enhanced mobile responsiveness  
 
----
-
-## ✅ Conclusion
+## Conclusion
 This project demonstrates full-stack development using **Flask + MySQL** with frontend-backend integration.  
 It provides a complete workflow from user input to database storage and admin-level data management.
